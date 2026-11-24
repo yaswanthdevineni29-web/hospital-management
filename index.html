@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CarePlus - Hospital Management</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-heart-pulse"></i>
+            <span>CarePlus</span>
+        </div>
+
+        <p class="menu-heading">MAIN MENU</p>
+
+        <nav>
+            <a href="#" class="nav-link active" data-page="dashboard">
+                <i class="fa-solid fa-house"></i> Dashboard
+            </a>
+            <a href="#" class="nav-link" data-page="patients">
+                <i class="fa-solid fa-users"></i> Patients
+            </a>
+            <a href="#" class="nav-link" data-page="doctors">
+                <i class="fa-solid fa-user-doctor"></i> Doctors
+            </a>
+            <a href="#" class="nav-link" data-page="appointments">
+                <i class="fa-solid fa-calendar-check"></i> Appointments
+            </a>
+            <a href="#" class="nav-link" data-page="departments">
+                <i class="fa-solid fa-hospital"></i> Departments
+            </a>
+            <a href="#" class="nav-link" data-page="billing">
+                <i class="fa-solid fa-file-invoice-dollar"></i> Billing
+            </a>
+        </nav>
+
+        <p class="menu-heading">SYSTEM</p>
+
+        <nav>
+            <a href="#" class="nav-link" data-page="reports">
+                <i class="fa-solid fa-chart-line"></i> Reports
+            </a>
+            <a href="#" class="nav-link" data-page="settings">
+                <i class="fa-solid fa-gear"></i> Settings
+            </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="help-box">
+                <i class="fa-solid fa-headset"></i>
+                <h4>Need Help?</h4>
+                <p>Contact our support team.</p>
+                <button onclick="alert('Support: support@careplus.demo')">Get Support</button>
+            </div>
+            <div class="admin">
+                <div class="avatar">AD</div>
+                <div>
+                    <strong>Admin User</strong>
+                    <small>Administrator</small>
+                </div>
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+        <header class="topbar">
+            <div class="top-left">
+                <button class="menu-toggle" onclick="toggleSidebar()">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div>
+                    <h2 id="page-title">Dashboard</h2>
+                    <p>Welcome back! Here's your hospital overview.</p>
+                </div>
+            </div>
+
+            <div class="top-actions">
+                <div class="search-box">
+                    <i class="fa-solid fa-search"></i>
+                    <input type="text" id="globalSearch" placeholder="Search patients...">
+                </div>
+                <button class="icon-btn" onclick="showNotifications()">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+                <div class="avatar">AD</div>
+            </div>
+        </header>
+
+        <section id="content">
+
+            <!-- DASHBOARD -->
+            <div id="dashboard-page" class="page">
+
+                <div class="welcome">
+                    <div>
+                        <h2>Hospital Overview 👋</h2>
+                        <p>Here is what's happening in your hospital today.</p>
+                    </div>
+                    <button class="primary-btn" onclick="openModal()">
+                        <i class="fa-solid fa-plus"></i> Add Patient
+                    </button>
+                </div>
+
+                <!-- STATISTICS -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <p>Total Patients</p>
+                        <h2 id="totalPatients">1,248</h2>
+                        <small class="positive">Hospital patient records</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon green">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </div>
+                        <p>Available Doctors</p>
+                        <h2>48</h2>
+                        <small class="positive">Medical professionals</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fa-solid fa-calendar-check"></i>
+                        </div>
+                        <p>Appointments</p>
+                        <h2 id="totalAppointments">86</h2>
+                        <small class="positive">Scheduled appointments</small>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon purple">
+                            <i class="fa-solid fa-bed-pulse"></i>
+                        </div>
+                        <p>Available Beds</p>
+                        <h2>124</h2>
+                        <small class="positive">Hospital bed availability</small>
+                    </div>
+
+                </div>
+
+                <!-- CHART AND DEPARTMENT -->
+                <div class="middle-grid">
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Patient Statistics</h3>
+                                <p>Monthly patient overview</p>
+                            </div>
+                            <span class="tag">2026</span>
+                        </div>
+
+                        <div class="chart">
+                            <div class="chart-y">
+                                <span>500</span>
+                                <span>400</span>
+                                <span>300</span>
+                                <span>200</span>
+                                <span>100</span>
+                                <span>0</span>
+                            </div>
+                            <div class="chart-area">
+                                <div class="grid-lines">
+                                    <span></span><span></span><span></span>
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="bars">
+                                    <div class="bar-item"><div class="bar" style="height:40%"></div><small>Jan</small></div>
+                                    <div class="bar-item"><div class="bar" style="height:60%"></div><small>Feb</small></div>
+                                    <div class="bar-item"><div class="bar" style="height:48%"></div><small>Mar</small></div>
+                                    <div class="bar-item"><div class="bar" style="height:75%"></div><small>Apr</small></div>
+                                    <div class="bar-item"><div class="bar" style="height:65%"></div><small>May</small></div>
+                                    <div class="bar-item"><div class="bar" style="height:90%"></div><small>Jun</small></div>
+                                    <div class="bar-item"><div class="bar" style="height:72%"></div><small>Jul</small></div>
+                                    <div class="bar-item"><div class="bar" style="height:83%"></div><small>Aug</small></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel department-panel">
+                        <div class="panel-header">
+                            <div>
+                                <h3>Departments</h3>
+                                <p>Hospital departments</p>
+                            </div>
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </div>
+
+                        <div class="department">
+                            <div class="dept-icon blue"><i class="fa-solid fa-heart-pulse"></i></div>
+                            <div><strong>Cardiology</strong><small>12 Doctors</small></div>
+                            <span>85%</span>
+                        </div>
+
+                        <div class="department">
+                            <div class="dept-icon green"><i class="fa-solid fa-brain"></i></div>
+                            <div><strong>Neurology</strong><small>08 Doctors</small></div>
+                            <span>70%</span>
+                        </div>
+
+                        <div class="department">
+                            <div class="dept-icon orange"><i class="fa-solid fa-bone"></i></div>
+                            <div><strong>Orthopedics</strong><small>10 Doctors</small></div>
+                            <span>65%</span>
+                        </div>
+
+                        <div class="department">
+                            <div class="dept-icon purple"><i class="fa-solid fa-eye"></i></div>
+                            <div><strong>Ophthalmology</strong><small>06 Doctors</small></div>
+                            <span>55%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- APPOINTMENTS -->
+                <div class="panel appointment-panel">
+                    <div class="panel-header">
+                        <div>
+                            <h3>Recent Appointments</h3>
+                            <p>Latest scheduled patient appointments</p>
+                        </div>
+                        <button class="outline-btn" onclick="navigate('appointments')">View All</button>
+                    </div>
+
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Patient Name</th>
+                                    <th>Doctor</th>
+                                    <th>Department</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dashboardAppointments">
+                                <tr>
+                                    <td>Rahul Sharma</td>
+                                    <td>Dr. Anil Kumar</td>
+                                    <td>Cardiology</td>
+                                    <td>23 Nov 2026</td>
+                                    <td><span class="status confirmed">Confirmed</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Priya Reddy</td>
+                                    <td>Dr. Sneha Rao</td>
+                                    <td>Neurology</td>
+                                    <td>23 Nov 2026</td>
+                                    <td><span class="status pending">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Arjun Kumar</td>
+                                    <td>Dr. Ravi Teja</td>
+                                    <td>Orthopedics</td>
+                                    <td>24 Nov 2026</td>
+                                    <td><span class="status confirmed">Confirmed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- OTHER PAGES -->
+            <div id="patients-page" class="page hidden">
+                <div class="welcome">
+                    <div><h2>Patient Management</h2><p>Manage hospital patient records.</p></div>
+                    <button class="primary-btn" onclick="openModal()">+ Add Patient</button>
+                </div>
+                <div class="panel">
+                    <div class="panel-header"><h3>All Patients</h3></div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Name</th><th>Age</th><th>Gender</th><th>Phone</th><th>Action</th></tr></thead>
+                            <tbody id="patientTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="doctors-page" class="page hidden">
+                <div class="welcome"><div><h2>Our Doctors</h2><p>Meet our medical professionals.</p></div></div>
+                <div class="doctor-grid">
+                    <div class="doctor-card"><div class="doctor-avatar">AK</div><h3>Dr. Anil Kumar</h3><p>Cardiologist</p><span>Available</span></div>
+                    <div class="doctor-card"><div class="doctor-avatar">SR</div><h3>Dr. Sneha Rao</h3><p>Neurologist</p><span>Available</span></div>
+                    <div class="doctor-card"><div class="doctor-avatar">RT</div><h3>Dr. Ravi Teja</h3><p>Orthopedic</p><span>Available</span></div>
+                    <div class="doctor-card"><div class="doctor-avatar">PM</div><h3>Dr. Priya Mehta</h3><p>Dermatologist</p><span>Available</span></div>
+                </div>
+            </div>
+
+            <div id="appointments-page" class="page hidden">
+                <div class="welcome">
+                    <div><h2>Appointments</h2><p>Manage patient appointments.</p></div>
+                    <button class="primary-btn" onclick="appointmentForm()">+ New Appointment</button>
+                </div>
+                <div class="panel">
+                    <h3>Appointment Schedule</h3>
+                    <div class="table-wrap">
+                        <table>
+                            <thead><tr><th>Patient</th><th>Doctor</th><th>Department</th><th>Date</th><th>Status</th></tr></thead>
+                            <tbody id="appointmentTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="departments-page" class="page hidden">
+                <div class="welcome"><div><h2>Hospital Departments</h2><p>Explore our medical services.</p></div></div>
+                <div class="doctor-grid">
+                    <div class="doctor-card"><div class="dept-icon blue"><i class="fa-solid fa-heart-pulse"></i></div><h3>Cardiology</h3><p>Heart care and treatment</p></div>
+                    <div class="doctor-card"><div class="dept-icon green"><i class="fa-solid fa-brain"></i></div><h3>Neurology</h3><p>Brain and nervous system</p></div>
+                    <div class="doctor-card"><div class="dept-icon orange"><i class="fa-solid fa-bone"></i></div><h3>Orthopedics</h3><p>Bones and joints</p></div>
+                    <div class="doctor-card"><div class="dept-icon purple"><i class="fa-solid fa-eye"></i></div><h3>Ophthalmology</h3><p>Eye care and treatment</p></div>
+                </div>
+            </div>
+
+            <div id="billing-page" class="page hidden">
+                <div class="welcome"><div><h2>Billing Management</h2><p>Calculate a demo patient bill.</p></div></div>
+                <div class="panel bill-panel">
+                    <h3>Generate Patient Bill</h3>
+                    <label>Patient Name</label>
+                    <input id="billName" placeholder="Enter patient name">
+                    <label>Consultation Fee (₹)</label>
+                    <input type="number" id="consultFee" value="500">
+                    <label>Medicine Charges (₹)</label>
+                    <input type="number" id="medicineFee" value="300">
+                    <label>Other Charges (₹)</label>
+                    <input type="number" id="otherFee" value="200">
+                    <button class="primary-btn" onclick="generateBill()">Generate Bill</button>
+                    <div id="billResult"></div>
+                </div>
+            </div>
+
+            <div id="reports-page" class="page hidden">
+                <div class="welcome"><div><h2>Hospital Reports</h2><p>Hospital activity summary.</p></div></div>
+                <div class="stats-grid">
+                    <div class="stat-card"><p>Patient Records</p><h2 id="reportPatients">1,248</h2></div>
+                    <div class="stat-card"><p>Doctors</p><h2>48</h2></div>
+                    <div class="stat-card"><p>Departments</p><h2>4</h2></div>
+                    <div class="stat-card"><p>Appointments</p><h2 id="reportAppointments">86</h2></div>
+                </div>
+            </div>
+
+            <div id="settings-page" class="page hidden">
+                <div class="welcome"><div><h2>Settings</h2><p>Application preferences.</p></div></div>
+                <div class="panel">
+                    <h3>Hospital Information</h3>
+                    <label>Hospital Name</label>
+                    <input value="CarePlus Hospital" id="hospitalName">
+                    <label>Contact Email</label>
+                    <input value="info@careplus.demo">
+                    <button class="primary-btn" onclick="alert('Demo settings saved!')">Save Settings</button>
+                </div>
+            </div>
+
+        </section>
+
+        <footer>© 2026 CarePlus Hospital Management System. All rights reserved.</footer>
+    </main>
+</div>
+
+<!-- ADD PATIENT MODAL -->
+<div class="modal-overlay" id="patientModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2>Register New Patient</h2>
+            <button onclick="closeModal()">&times;</button>
+        </div>
+        <form id="patientForm">
+            <label>Patient Name</label>
+            <input id="patientName" required placeholder="Enter full name">
+
+            <label>Age</label>
+            <input id="patientAge" type="number" min="0" required placeholder="Enter age">
+
+            <label>Gender</label>
+            <select id="patientGender" required>
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+
+            <label>Phone Number</label>
+            <input id="patientPhone" type="tel" required placeholder="Enter phone number">
+
+            <button type="submit" class="primary-btn full-btn">Register Patient</button>
+        </form>
+    </div>
+</div>
+
+<!-- APPOINTMENT MODAL -->
+<div class="modal-overlay" id="appointmentModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2>Book Appointment</h2>
+            <button onclick="closeAppointment()">&times;</button>
+        </div>
+        <form id="appointmentForm">
+            <label>Patient Name</label>
+            <input id="appointmentPatient" required placeholder="Patient name">
+            <label>Doctor</label>
+            <select id="appointmentDoctor">
+                <option>Dr. Anil Kumar</option>
+                <option>Dr. Sneha Rao</option>
+                <option>Dr. Ravi Teja</option>
+                <option>Dr. Priya Mehta</option>
+            </select>
+            <label>Department</label>
+            <select id="appointmentDepartment">
+                <option>Cardiology</option>
+                <option>Neurology</option>
+                <option>Orthopedics</option>
+                <option>Ophthalmology</option>
+            </select>
+            <label>Date</label>
+            <input id="appointmentDate" type="date" required>
+            <button type="submit" class="primary-btn full-btn">Book Appointment</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
